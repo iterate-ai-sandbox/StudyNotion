@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom"
 
 import { formattedDate } from "../../../utils/dateFormatter"
 import IconBtn from "../../common/IconBtn"
+import mixpanel from "mixpanel-browser"
 
 export default function MyProfile() {
   const { user } = useSelector((state) => state.profile)
@@ -31,6 +32,7 @@ export default function MyProfile() {
         <IconBtn
           text="Edit"
           onclick={() => {
+            mixpanel.track("Edit profile button clicked")
             navigate("/dashboard/settings")
           }}
         >
@@ -43,6 +45,7 @@ export default function MyProfile() {
           <IconBtn
             text="Edit"
             onclick={() => {
+              mixpanel.track("Edit profile button clicked")
               navigate("/dashboard/settings")
             }}
           >

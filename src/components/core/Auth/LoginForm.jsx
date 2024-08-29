@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux"
 import { Link, useNavigate } from "react-router-dom"
 
 import { login } from "../../../services/operations/authAPI"
+import mixpanel from "mixpanel-browser"
 
 function LoginForm() {
   const navigate = useNavigate()
@@ -26,6 +27,7 @@ function LoginForm() {
 
   const handleOnSubmit = (e) => {
     e.preventDefault()
+    mixpanel.track("Login button clicked")
     dispatch(login(email, password, navigate))
   }
 
